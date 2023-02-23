@@ -169,11 +169,11 @@ async function prueba() {
   let get_all_two = await archivo.getProducts();
   console.log(get_all_two);
 
-/* Se llama al método getProductById(), devuelve el id especificado  */
+/* Se llama al método getProductById(), devuelve el producto con el id especificado  */
   let get_id = await archivo.getProductById(3);
   console.log(get_id);
 
-/* Se llama al método updateProduct() y se cambia algun campo de algún producto, sin eliminar el id  */
+/* Se llama al método updateProduct(), con el cual se modifican los campos de algún producto, sin eliminar el id  */
   await archivo.updateById({
     title: "Agua Micelar",
     description:
@@ -187,10 +187,10 @@ async function prueba() {
     id: 1,
   });
 
-/* Se llama al método deleteProduct(), el cual elimina el producto */
+/* Se llama al método deleteProduct(), el cual elimina el producto especificado por id */
   await archivo.deleteProduct(5);
 
-/* Como un extra, creé el método deleteAll(), el cual elimina todos los productos del arcivo */
+/* Como un extra, creé el método deleteAll(), el cual elimina todos los productos del archivo */
   await archivo.deleteAll();
 
 }
