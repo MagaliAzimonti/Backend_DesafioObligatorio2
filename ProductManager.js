@@ -96,14 +96,20 @@ class ProductManager {
   }
 }
 
-
-/* Generar instancia de prueba */
-
+/* PROCESO DE TESTING */
+/* Crear instancia de prueba de la clase ProductManager */
 const archivo = new ProductManager("productos.json");
 
+
 async function prueba() {
-  //addProduct()
-  /* await archivo.addProduct({
+
+/* Llamar a getProducts() tras crear la instancia, devolverá un array vacío */
+  let get_all = await archivo.getProducts();
+  console.log(get_all);
+
+/* Llamar al método addProduct() con los campos correspondientes */
+/* El objeto se agrega con un id generado automaticamente que no se repite */
+  await archivo.addProduct({
     title: "Crema de manos Neroli & Orquideas",
     description:
       "Mantené la piel de tus manos nutrida, hidratada y fresca todo el día. La Manteca de Karité brindará antioxidantes superiores y beneficios extraordinarios para la piel de tus manos, mientras que la Vitamina E te aportará propiedades Humectantes y Regenerativas para tu piel. El Aceite de Macadamia le dará elasticidad y firmeza a tus manos y las dejará suaves y sedosas.",
@@ -157,24 +163,18 @@ async function prueba() {
     code: "AM5",
     stock: "41",
     brand: "Semilla",
-  }); */
+  });
 
-  //getProducts()
-  /* let get_all = await archivo.getProducts();
-  console.log(get_all); */
+/* Se llama al método getProducts() nuevamente, esta vez devuelve los productos recién añadidos */
+  let get_all_two = await archivo.getProducts();
+  console.log(get_all_two);
 
-  //getProductById()
-  /* let get_id = await archivo.getProductById(3);
-  console.log(get_id); */
+/* Se llama al método getProductById(), devuelve el id especificado  */
+  let get_id = await archivo.getProductById(3);
+  console.log(get_id);
 
-  //deleteProduct()
-  /* await archivo.deleteProduct(5); */
-
-  //deleteAll()
-  /* await archivo.deleteAll(); */
-
-  //updateById
-  /* await archivo.updateById({
+/* Se llama al método updateProduct() y se cambia algun campo de algún producto, sin eliminar el id  */
+  await archivo.updateById({
     title: "Agua Micelar",
     description:
       "Limpia, desmaquilla, previene irritaciones y suaviza tu piel gracias a los extractos de Manzanilla, Malva y Caléndula. Nuestra Agua Micelar forma Micelas que retienen el maquillaje o impurezas creando una piel más limpia y fresca.",
@@ -185,7 +185,14 @@ async function prueba() {
     stock: "41",
     brand: "Semilla",
     id: 1,
-  }); */
+  });
+
+/* Se llama al método deleteProduct(), el cual elimina el producto */
+  await archivo.deleteProduct(5);
+
+/* Como un extra, creé el método deleteAll(), el cual elimina todos los productos del arcivo */
+  await archivo.deleteAll();
+
 }
 
 prueba();
